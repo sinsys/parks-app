@@ -46,3 +46,8 @@ label {
 .park-image {
   padding: 1rem 25px;
 }
+
+.address {
+  padding: 1rem;
+  border: 1px solid #DDD;
+}

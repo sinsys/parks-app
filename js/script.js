@@ -73,6 +73,7 @@ function queryParks(stateCode, resultCount=10){
 	const parameters = {
 		stateCode: stateCode,
 		limit: resultCount,
+        fields: "addresses",
 		api_key: '6UT3pYcealcHsuQYKEzQaeqUUki3ijXRUDUjMdOJ'
 	}
 	const searchApiUrl = 'https://developer.nps.gov/api/v1/parks';
@@ -103,7 +104,6 @@ function errorHandler(res){
 
 function queryImg(coords, alt){
 	if(coords != "" && coords.slice(0,4) == "lat:"){
-		console.log(coords);
 		const apiKey = `AIzaSyAh8qWOtN-vS2IFWA4ZdLidB0yA37vz7iE`;
 		let latLong = coords.split(',');
 		let lat = latLong[0].slice(4);
@@ -114,13 +114,31 @@ function queryImg(coords, alt){
 		return $(`<div class="no-coordinates-found">No coordinates provided</div>`);
 	}
 }
+function $renderAddresses(addresses){
+    let $addresses = $('<div class="addresses">');
+    addresses.forEach(address => {
+        let $address = `<div class="address">`;
+        console.log(address.line1);
+        if(address.line1 != ""){ $address+=address.line1 + "<br>" }
+        if(address.line2 != ""){ $address+=address.line2 + "<br>" }
+        if(address.line3 != ""){ $address+=address.line3 + "<br>" }
+        if(address.city != ""){ $address+=address.city + ", " }
+        if(address.stateCode != ""){ $address+=address.stateCode + "<br>" }
+        if(address.postalCode != ""){ $address+=address.postalCode }
+        $address+=`</div>`;
+        $addresses.append($address);
+    })
+    return $addresses;
+}
 
 function $renderPark(park){
 	let $parkWrapper = $('<div class="park-wrapper">');
 	$parkWrapper.append(`<h2 class="title">${park.fullName}</h2>
 		<p class="description">${park.description}</p>
 		<a href="${park.url}">${park.url}</a><br>
-		<p>Aerial Photo</p>`);
+    `);
+    $parkWrapper.append($renderAddresses(park.addresses));
+    $parkWrapper.append(`<p>Aerial Photo</p>`);
 	$parkWrapper.append(queryImg(`${park.latLong},${park.fullName}`));
 	return $parkWrapper;
 }
