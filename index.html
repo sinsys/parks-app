@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <meta name="description" content="Get info about national parks">
+    <title>National Parks</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body>
+    <h1>Look Up Park Info</h1>
+    <form id="search-parks">
+      <div class="form-field">
+        <label for="state-select">State / Territory</label>
+        <select id="state-dropdown-select" name="state-select"></select>
+      </div>
+      <div class="form-field">
+        <label for="result-count">Max Results</label>
+        <input id="result-count" type="number" name="result-count" value="10">
+      </div>
+      <div class="form-field">
+        <input type="submit" value="Search">
+      </div>
+    </form>
+    <section id="park-listings"></section>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+  </body>
+</html>
+
+

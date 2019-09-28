@@ -1,0 +1,48 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+#park-images {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.no-coordinates-found {
+  width: 600px;
+  height: 300px;
+  background: #CCC;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img,.no-coordinates-found {
+  width: 600px;
+  height: 300px;
+}
+
+label {
+  display: block;
+}
+
+#search-parks {
+  display: flex;
+  align-items: flex-end;
+}
+.form-field {
+  margin: 1rem;
+}
+
+.park-wrapper {
+  width: 650px;
+  border: 1px solid #CCC;
+  padding: 25px;
+  margin-bottom: 1rem;
+}
+
+.park-image {
+  padding: 1rem 25px;
+}
